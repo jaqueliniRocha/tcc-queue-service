@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/queue
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+  rabbitmq:
+    host: baboon.rmq.cloudamqp.com
+    username: ducpfyhp
+    password: WkwjIxM0hsaL7BTsWyyURXKUPugrQFiI
+    virtual-host: ducpfyhp
+
+jwt:
+  secret: 5ebe2294ecd0e0f08eab7690d2a6ee69
