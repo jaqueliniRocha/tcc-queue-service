@@ -1,0 +1,54 @@
+###
+POST http://localhost:8081/appointment
+accept: */*
+Content-Type: application/json
+
+{
+  "customer": {"id": 3}
+}
+
+###
+POST http://localhost:8081/appointment
+accept: */*
+Content-Type: application/json
+
+{
+  "customer": {"id": 4}
+}
+
+###
+POST http://localhost:8081/appointmentQueue
+accept: */*
+Content-Type: application/json
+
+{
+  "customer": {"id": 5}
+}
+
+###
+POST http://localhost:8081/appointmentQueue
+accept: */*
+Content-Type: application/json
+
+{
+  "customer": {"id": 7}
+}
+
+###
+POST http://localhost:8081/appointmentQueue
+accept: */*
+Content-Type: application/json
+
+{
+  "customer": {"id": 6}
+}
+
+###
+GET http://localhost:8081/appointmentQueue/user/5
+accept: */*
+Content-Type: application/json
+
+###
+DELETE http://localhost:8081/appointmentQueue
+accept: */*
+Content-Type: application/json

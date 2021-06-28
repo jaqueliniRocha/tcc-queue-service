@@ -8,18 +8,16 @@ import javax.validation.constraints.NotNull
 @Entity
 data class User(
     @Id val id: Long,
-    @field:NotBlank val firstName: String,
-    @field:NotBlank val lastName: String,
-    @field:Email @field:NotBlank @field:Column(unique=true) val email: String,
-    @field:NotBlank var password: String,
+    val firstName: String?,
+    val lastName: String?,
+    val email: String?,
+    var password: String?,
 
     @Enumerated(EnumType.STRING)
-    @field:NotNull
-    val category: UserCategory,
+    val category: UserCategory?,
 
     @Enumerated(EnumType.STRING)
-    @field:NotNull
-    val profile: UserProfile,
+    val profile: UserProfile?,
 ) {
 
     override fun toString(): String {
