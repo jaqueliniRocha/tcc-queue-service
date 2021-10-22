@@ -4,17 +4,17 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    password: root
-    url: jdbc:mysql://localhost:3306/queue
+    url: jdbc:mysql://34.121.45.68:3306/queue
     username: root
+    password: ufc3ycf-FQE9wcn4cxq
   jpa:
     hibernate:
       ddl-auto: update
   rabbitmq:
-    host: baboon.rmq.cloudamqp.com
-    username: ducpfyhp
-    password: WkwjIxM0hsaL7BTsWyyURXKUPugrQFiI
-    virtual-host: ducpfyhp
+    host: poodle.rmq2.cloudamqp.com
+    username: qtwqbndk
+    password: pmlbqf9DkBOL4g77VUgfRNHc8lOiNDdw
+    virtual-host: qtwqbndk
 
 jwt:
   secret: 5ebe2294ecd0e0f08eab7690d2a6ee69
