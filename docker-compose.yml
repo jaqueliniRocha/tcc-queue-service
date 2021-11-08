@@ -1,0 +1,13 @@
+rabbitmq:
+  image: rabbitmq:3.6-management
+  ports:
+    - 15672:15672
+    - 5672:5672
+mysql:
+  platform: linux/x86_64
+  image: mysql:5.7
+  environment:
+    MYSQL_DATABASE: queue 
+    MYSQL_ROOT_PASSWORD: root
+  ports:
+    - 3306:3306
