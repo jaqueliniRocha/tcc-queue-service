@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank
 @Entity
 data class Pet (
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
+    var id: Long,
 
     @field:NotBlank
     val name: String,

@@ -2,7 +2,7 @@ package com.mycompany.queueservice.infrastructure.messaging
 
 import com.mycompany.queueservice.model.Serializer
 import com.mycompany.queueservice.model.User
-import com.mycompany.queueservice.model.UserRepository
+import com.mycompany.queueservice.model.repository.UserRepository
 import org.slf4j.LoggerFactory
 import org.springframework.amqp.core.Message
 import org.springframework.amqp.rabbit.annotation.RabbitListener

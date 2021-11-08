@@ -1,9 +1,9 @@
 package com.mycompany.queueservice.application
 
 import com.mycompany.queueservice.model.AppointmentQueue
-import com.mycompany.queueservice.model.AppointmentQueueRepository
+import com.mycompany.queueservice.model.repository.AppointmentQueueRepository
 import com.mycompany.queueservice.model.UserAlreadyExistsException
-import com.mycompany.queueservice.model.UserRepository
+import com.mycompany.queueservice.model.repository.UserRepository
 import org.springframework.stereotype.Service
 import java.time.Duration
 import java.time.temporal.ChronoUnit

@@ -1,5 +1,6 @@
-package com.mycompany.queueservice.model
+package com.mycompany.queueservice.model.repository
 
+import com.mycompany.queueservice.model.User
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 

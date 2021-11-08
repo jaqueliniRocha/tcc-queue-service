@@ -22,7 +22,6 @@ data class User(
     @Enumerated(EnumType.STRING)
     val profile: UserProfile?,
 
-    @field:NotNull
     @field:Valid
     @Cascade(CascadeType.ALL)
     @OneToMany
