@@ -1,11 +1,9 @@
 package com.mycompany.queueservice.infrastructure.rest
 
 import com.mycompany.queueservice.application.AppointmentQueueService
-import com.mycompany.queueservice.model.AppointmentQueue
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpEntity
-import org.springframework.http.ResponseEntity.created
-import org.springframework.http.ResponseEntity.ok
+import org.springframework.http.ResponseEntity.*
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 import javax.validation.Valid
@@ -40,8 +38,17 @@ class AppointmentQueueApi(
     @DeleteMapping()
     fun remove(
     ): HttpEntity<Any?> {
-        val removed = appointmentQueueService.remove()
-        log.info("remover user id ${removed?.id} from queue")
+        val removed = appointmentQueueService.removeFirst()
+        log.info("removed user id ${removed?.id} from queue")
         return ok(removed)
+    }
+
+    @DeleteMapping("/user/{id}")
+    fun remove(
+        @PathVariable id: Long
+    ): HeadersBuilder<*> {
+        appointmentQueueService.remove(id)
+        log.info("removed user id $id from queue")
+        return noContent()
     }
 }

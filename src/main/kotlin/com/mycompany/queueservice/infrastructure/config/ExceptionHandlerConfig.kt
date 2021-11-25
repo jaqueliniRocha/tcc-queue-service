@@ -1,6 +1,7 @@
 package com.mycompany.queueservice.infrastructure.config
 
 import com.mycompany.queueservice.model.NotFoundException
+import com.mycompany.queueservice.model.UserAlreadyExistsException
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -36,4 +37,13 @@ class ExceptionHandlerConfig : ResponseEntityExceptionHandler(
         return ResponseEntity(HttpStatus.NOT_FOUND)
 
     }
+
+    @ExceptionHandler(UserAlreadyExistsException::class)
+    fun handleUserAlreadyExistsException(
+        ex: UserAlreadyExistsException,
+    ): ResponseEntity<Any> {
+        return ResponseEntity(HttpStatus.BAD_REQUEST)
+
+    }
+
 }

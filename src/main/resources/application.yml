@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://34.121.45.68:3306/queue
-    username: root
-    password: ufc3ycf-FQE9wcn4cxq
+    url: jdbc:mysql://b41d593e901c18:2ba93d2f@us-cdbr-east-04.cleardb.com/heroku_51f76287df095ba?reconnect=true
+    username: b41d593e901c18
+    password: 2ba93d2f
   jpa:
     hibernate:
       ddl-auto: update
