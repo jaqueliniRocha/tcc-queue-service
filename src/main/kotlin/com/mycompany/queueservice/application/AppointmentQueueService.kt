@@ -4,6 +4,7 @@ import com.mycompany.queueservice.model.AppointmentQueue
 import com.mycompany.queueservice.model.NotFoundException
 import com.mycompany.queueservice.model.repository.AppointmentQueueRepository
 import com.mycompany.queueservice.model.UserAlreadyExistsException
+import com.mycompany.queueservice.model.UserCategory
 import com.mycompany.queueservice.model.repository.UserRepository
 import org.springframework.stereotype.Service
 import java.time.Duration
@@ -17,7 +18,8 @@ class AppointmentQueueService(
 ) {
 
     fun create(customerId: Long): AppointmentQueue {
-        val customer = userRepository.findById(customerId).get()
+        val customer = userRepository.findByIdAndCategory(customerId, UserCategory.CUSTOMER) ?: throw NotFoundException()
+
         var position = 0
         if(appointmentQueueRepository.existsByCustomerId(customerId)){
             throw UserAlreadyExistsException()
