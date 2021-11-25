@@ -1,4 +1,4 @@
-package com.mycompany.queueservice.infrastructure
+package com.mycompany.queueservice.infrastructure.rest
 
 import com.mycompany.queueservice.application.QrcodeService
 import org.springframework.http.MediaType

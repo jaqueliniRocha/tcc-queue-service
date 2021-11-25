@@ -8,13 +8,14 @@ import kotlin.jvm.Transient
 
 @Entity
 data class AppointmentQueue(
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
     @Transient var estimatedRemainingTime: Duration?,
+
     @field:NotNull @field:Min(0) var position: Int,
 
     @OneToOne
-    @field:NotNull var customer : User,
+    @field:NotNull var customer: User,
+
 ) {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null
 
 }

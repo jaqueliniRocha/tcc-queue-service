@@ -26,9 +26,8 @@ data class User(
     @Cascade(CascadeType.ALL)
     @OneToMany
     @JoinColumn(name = "user_id")
-    val pets: Collection<Pet>,
+    val pets: Collection<Pet>?,
 ) {
-
     override fun toString(): String {
         return "User(id=$id, firstName=$firstName, lastName=$lastName, email=$email, password=$password, " +
                 "category=$category, profile=$profile, pets=$pets)"

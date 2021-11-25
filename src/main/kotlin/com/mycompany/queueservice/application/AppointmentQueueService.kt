@@ -18,18 +18,25 @@ class AppointmentQueueService(
         private const val APPOINTMENT_DURATION_IN_MIN: Int = 20
     }
 
-    fun create(appointmentQueue: AppointmentQueue): AppointmentQueue {
-        appointmentQueue.customer = userRepository.findById(appointmentQueue.customer.id).get()
-        if(appointmentQueueRepository.existsByCustomerId(appointmentQueue.customer.id)){
+    fun create(customerId: Long): AppointmentQueue {
+        val customer = userRepository.findById(customerId).get()
+        var position = 0
+        if(appointmentQueueRepository.existsByCustomerId(customerId)){
             throw UserAlreadyExistsException()
         }
         val queue = appointmentQueueRepository.findFirstByOrderByPositionDesc()
         if(queue == null){
-            appointmentQueue.position = 1
+            position = 1
         } else {
-            appointmentQueue.position = queue.position + 1
+            position = queue.position + 1
         }
-        return appointmentQueueRepository.save(appointmentQueue)
+        return appointmentQueueRepository.save(
+            AppointmentQueue(
+                position = position,
+                estimatedRemainingTime = Duration.ZERO,
+                customer = customer
+            )
+        )
     }
 
     fun findByUser(userId: Long): AppointmentQueue {
@@ -45,7 +52,7 @@ class AppointmentQueueService(
             return null
         }
         val removedItem = queue.remove()
-        appointmentQueueRepository.deleteById(removedItem.id)
+        removedItem.id?.let { appointmentQueueRepository.deleteById(it) }
         var counter = 1
         for (o in queue){
             o.position = counter

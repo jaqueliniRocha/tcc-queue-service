@@ -1,4 +1,4 @@
-package com.mycompany.queueservice.infrastructure
+package com.mycompany.queueservice.infrastructure.rest
 
 import com.mycompany.queueservice.application.AppointmentQueueService
 import com.mycompany.queueservice.model.AppointmentQueue
@@ -20,12 +20,12 @@ class AppointmentQueueApi(
 
     @PostMapping
     fun create(
-        @Valid @RequestBody queueAppointmentQueue: AppointmentQueue,
+        @Valid @RequestBody request: AddToQueueRequest,
         uriComponentsBuilder: UriComponentsBuilder
     ): HttpEntity<Any?> {
-        log.info("creating appointment $queueAppointmentQueue")
-        val savedUser = appointmentQueueService.create(queueAppointmentQueue)
-        log.info("finished with id $queueAppointmentQueue.id")
+        log.info("creating appointment $request")
+        val savedUser = appointmentQueueService.create(request.customerId)
+        log.info("finished with id $request.id")
         return created(uriComponentsBuilder.path("/appointment/{id}").buildAndExpand(savedUser.id).toUri()).build()
     }
 
