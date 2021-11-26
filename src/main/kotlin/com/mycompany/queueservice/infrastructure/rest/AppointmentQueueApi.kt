@@ -35,6 +35,13 @@ class AppointmentQueueApi(
         return ok(appointmentQueueService.findByUser(id))
     }
 
+    @GetMapping()
+    fun findAll(
+    ): HttpEntity<Any?> {
+        log.info("finding queue")
+        return ok(appointmentQueueService.findAll())
+    }
+
     @DeleteMapping()
     fun remove(
     ): HttpEntity<Any?> {

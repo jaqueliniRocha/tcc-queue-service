@@ -39,6 +39,10 @@ class AppointmentQueueService(
         )
     }
 
+    fun findAll(): Collection<AppointmentQueue>? {
+        return appointmentQueueRepository.findAllByOrderByPositionAsc()
+    }
+
     fun findByUser(userId: Long): AppointmentQueue? {
         val queueAppointment = appointmentQueueRepository.findByCustomerId(userId)
         queueAppointment?.estimatedRemainingTime =
