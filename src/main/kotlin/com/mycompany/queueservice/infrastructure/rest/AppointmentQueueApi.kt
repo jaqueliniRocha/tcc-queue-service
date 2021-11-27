@@ -56,6 +56,6 @@ class AppointmentQueueApi(
     ): HeadersBuilder<*> {
         appointmentQueueService.remove(id)
         log.info("removed queue id $id")
-        return noContent()
+        return ok()
     }
 }
