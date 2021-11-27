@@ -61,9 +61,9 @@ class AppointmentQueueService(
         return removedItem
     }
 
-    fun remove(customerId: Long) {
-        var appointment = appointmentQueueRepository.findByCustomerId(customerId) ?: throw NotFoundException()
-        appointmentQueueRepository.delete(appointment)
+    fun remove(queueId: Long) {
+        var appointment = appointmentQueueRepository.findById(queueId)
+        appointmentQueueRepository.delete(appointment.get())
         updatePositionsInQueue(appointmentQueueRepository.findAllByOrderByPositionAsc())
     }
 

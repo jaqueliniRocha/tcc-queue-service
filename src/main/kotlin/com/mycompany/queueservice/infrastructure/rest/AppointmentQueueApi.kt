@@ -50,12 +50,12 @@ class AppointmentQueueApi(
         return ok(removed)
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/{id}")
     fun remove(
         @PathVariable id: Long
     ): HeadersBuilder<*> {
         appointmentQueueService.remove(id)
-        log.info("removed user id $id from queue")
+        log.info("removed queue id $id")
         return noContent()
     }
 }
