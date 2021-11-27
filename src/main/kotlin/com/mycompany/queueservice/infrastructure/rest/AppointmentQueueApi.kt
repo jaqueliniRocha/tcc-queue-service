@@ -53,9 +53,9 @@ class AppointmentQueueApi(
     @DeleteMapping("/{id}")
     fun remove(
         @PathVariable id: Long
-    ): HeadersBuilder<*> {
+    ): HttpEntity<Any?> {
         appointmentQueueService.remove(id)
         log.info("removed queue id $id")
-        return ok()
+        return noContent().build()
     }
 }
