@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://b41d593e901c18:2ba93d2f@us-cdbr-east-04.cleardb.com/heroku_51f76287df095ba?reconnect=true
-    username: b41d593e901c18
-    password: 2ba93d2f
+    url: jdbc:mysql://34.121.45.68?reconnect=true
+    username: root
+    password: ufc3ycf-FQE9wcn4cxq
     hikari:
       max-lifetime=600000
   jpa:
