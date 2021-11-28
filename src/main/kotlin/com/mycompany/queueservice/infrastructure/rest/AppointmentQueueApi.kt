@@ -27,6 +27,14 @@ class AppointmentQueueApi(
         return created(uriComponentsBuilder.path("/appointment/{id}").buildAndExpand(savedUser.id).toUri()).build()
     }
 
+    @GetMapping("/{id}")
+    fun findById(
+        @PathVariable id: Long
+    ): HttpEntity<Any?> {
+        log.info("finding appointment with id $id")
+        return ok(appointmentQueueService.findById(id))
+    }
+
     @GetMapping("/user/{id}")
     fun findByUserId(
         @PathVariable id: Long

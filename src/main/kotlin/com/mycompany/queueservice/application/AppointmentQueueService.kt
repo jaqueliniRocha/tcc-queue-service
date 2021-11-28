@@ -50,6 +50,10 @@ class AppointmentQueueService(
         return queueAppointment
     }
 
+    fun findById(id: Long): AppointmentQueue? {
+        return appointmentQueueRepository.findById(id).get()
+    }
+
     fun removeFirst(): AppointmentQueue? {
         val queue = appointmentQueueRepository.findAllByOrderByPositionAsc()
         if(queue.isEmpty()){
