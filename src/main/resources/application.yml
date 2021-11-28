@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://34.121.45.68?reconnect=true
+    url: jdbc:mysql://34.121.45.68/queue?reconnect=true
     username: root
     password: ufc3ycf-FQE9wcn4cxq
     hikari:
