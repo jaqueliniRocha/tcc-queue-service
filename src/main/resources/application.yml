@@ -7,6 +7,8 @@ spring:
     url: jdbc:mysql://b41d593e901c18:2ba93d2f@us-cdbr-east-04.cleardb.com/heroku_51f76287df095ba?reconnect=true
     username: b41d593e901c18
     password: 2ba93d2f
+    hikari:
+      max-lifetime=600000
   jpa:
     hibernate:
       ddl-auto: update
