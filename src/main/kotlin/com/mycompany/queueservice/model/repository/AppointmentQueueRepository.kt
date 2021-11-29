@@ -10,5 +10,5 @@ interface AppointmentQueueRepository : CrudRepository<AppointmentQueue, Long> {
     fun findAllByOrderByPositionAsc(): LinkedList<AppointmentQueue>
     fun findFirstByOrderByPositionDesc(): AppointmentQueue?
     fun findByCustomerId(userId: Long): AppointmentQueue?
-    fun existsByCustomerId(customerId: Long): Boolean
+    fun existsByCpf(cpf: String): Boolean
 }

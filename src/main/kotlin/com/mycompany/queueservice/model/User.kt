@@ -15,6 +15,7 @@ data class User(
     val lastName: String?,
     val email: String?,
     var password: String?,
+    var cpf: String?,
 
     @Enumerated(EnumType.STRING)
     val category: UserCategory?,
@@ -30,6 +31,6 @@ data class User(
 ) {
     override fun toString(): String {
         return "User(id=$id, firstName=$firstName, lastName=$lastName, email=$email, password=$password, " +
-                "category=$category, profile=$profile, pets=$pets)"
+                "category=$category, profile=$profile, pets=$pets, cpf=$cpf)"
     }
 }

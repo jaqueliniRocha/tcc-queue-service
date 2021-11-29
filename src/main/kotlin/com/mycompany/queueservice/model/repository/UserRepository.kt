@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface UserRepository : CrudRepository<User, Long> {
-    fun findByIdAndCategory(customerId: Long, category : UserCategory): User?
+    fun findByCpfAndCategory(cpf: String, customer: UserCategory): User?
 }
