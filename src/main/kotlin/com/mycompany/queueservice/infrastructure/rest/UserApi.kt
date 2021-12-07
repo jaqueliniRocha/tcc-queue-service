@@ -1,9 +1,10 @@
 package com.mycompany.queueservice.infrastructure.rest
 
+import com.mycompany.queueservice.model.User
 import com.mycompany.queueservice.model.UserCategory
 import com.mycompany.queueservice.model.repository.UserRepository
 import org.slf4j.LoggerFactory
-import org.springframework.http.HttpEntity
+import org.springframework.http.ResponseEntity
 import org.springframework.http.ResponseEntity.*
 import org.springframework.web.bind.annotation.*
 
@@ -18,8 +19,9 @@ class UserApi(
     @GetMapping("/customer/{cpf}")
     fun findCustomerByCpf(
         @PathVariable cpf: String
-    ): HttpEntity<Any?> {
+    ): ResponseEntity<User> {
         log.info("finding user with cpf $cpf")
-        return ok(userRepository.findByCpfAndCategory(cpf, UserCategory.CUSTOMER))
+        val user = userRepository.findByCpfAndCategory(cpf, UserCategory.CUSTOMER) ?: return notFound().build()
+        return ok(user)
     }
 }
