@@ -21,7 +21,7 @@ class AppointmentQueueService(
         val customer = userRepository.findByCpfAndCategory(cpf, UserCategory.CUSTOMER) ?: throw NotFoundException()
 
         var position = 0
-        if(appointmentQueueRepository.existsById(customer.id)){
+        if(appointmentQueueRepository.existsByCustomer(customer)){
             throw UserAlreadyExistsException()
         }
         val queue = appointmentQueueRepository.findFirstByOrderByPositionDesc()
