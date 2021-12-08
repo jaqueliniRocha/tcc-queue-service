@@ -19,7 +19,6 @@ data class AppointmentQueue(
     @field:NotNull var customer: User,
 
     @field:Valid
-    @Cascade(CascadeType.ALL)
     @OneToOne
     val pet: Pet?
 
