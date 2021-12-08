@@ -17,7 +17,7 @@ class AppointmentQueueService(
     val userRepository: UserRepository
 ) {
 
-    fun create(cpf: String): AppointmentQueue {
+    fun create(cpf: String, petId: Long): AppointmentQueue {
         val customer = userRepository.findByCpfAndCategory(cpf, UserCategory.CUSTOMER) ?: throw NotFoundException()
 
         var position = 0
@@ -34,7 +34,8 @@ class AppointmentQueueService(
             AppointmentQueue(
                 position = position,
                 estimatedRemainingTime = Duration.ZERO,
-                customer = customer
+                customer = customer,
+                pet = customer.pets?.find { p -> p.id == petId }
             )
         )
     }

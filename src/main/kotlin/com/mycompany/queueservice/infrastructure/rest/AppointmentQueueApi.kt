@@ -22,7 +22,7 @@ class AppointmentQueueApi(
         uriComponentsBuilder: UriComponentsBuilder
     ): HttpEntity<Any?> {
         log.info("creating appointment $request")
-        val savedUser = appointmentQueueService.create(request.cpf)
+        val savedUser = appointmentQueueService.create(request.cpf, request.petId)
         log.info("finished with id $request.id")
         return created(uriComponentsBuilder.path("/appointment/{id}").buildAndExpand(savedUser.id).toUri()).build()
     }

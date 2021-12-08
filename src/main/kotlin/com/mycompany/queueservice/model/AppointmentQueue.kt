@@ -1,7 +1,10 @@
 package com.mycompany.queueservice.model
 
+import org.hibernate.annotations.Cascade
+import org.hibernate.annotations.CascadeType
 import java.time.Duration
 import javax.persistence.*
+import javax.validation.Valid
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotNull
 import kotlin.jvm.Transient
@@ -14,6 +17,11 @@ data class AppointmentQueue(
 
     @OneToOne
     @field:NotNull var customer: User,
+
+    @field:Valid
+    @Cascade(CascadeType.ALL)
+    @OneToOne
+    val pet: Pet?
 
 ) {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null
