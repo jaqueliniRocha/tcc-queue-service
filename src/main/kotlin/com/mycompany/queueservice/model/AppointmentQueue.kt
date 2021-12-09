@@ -1,8 +1,5 @@
 package com.mycompany.queueservice.model
 
-import org.hibernate.annotations.Cascade
-import org.hibernate.annotations.CascadeType
-import java.time.Duration
 import javax.persistence.*
 import javax.validation.Valid
 import javax.validation.constraints.Min
@@ -11,7 +8,7 @@ import kotlin.jvm.Transient
 
 @Entity
 data class AppointmentQueue(
-    @Transient var estimatedRemainingTime: Duration?,
+    @Transient var estimatedRemainingTime: Int?,
 
     @field:NotNull @field:Min(0) var position: Int,
 

@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UserRepository : CrudRepository<User, Long> {
     fun findByCpfAndCategory(cpf: String, customer: UserCategory): User?
+    fun findByCategory(veterinary: UserCategory): Collection<User>
 }
