@@ -4,11 +4,10 @@ import javax.persistence.*
 import javax.validation.Valid
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotNull
-import kotlin.jvm.Transient
 
 @Entity
 data class AppointmentQueue(
-    @Transient var estimatedRemainingTime: Int?,
+    var estimatedRemainingTime: Int?,
 
     @field:NotNull @field:Min(0) var position: Int,
 
