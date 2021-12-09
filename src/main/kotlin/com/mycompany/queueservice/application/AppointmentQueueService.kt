@@ -83,6 +83,7 @@ class AppointmentQueueService(
         var counter = 1
         for (appointment in queue) {
             appointment.position = counter
+            appointment.estimatedRemainingTime = calculatesEstimatedRemainingTime(appointment.position)
             appointmentQueueRepository.save(appointment)
             counter += 1
         }
