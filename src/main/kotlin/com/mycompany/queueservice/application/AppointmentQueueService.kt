@@ -19,9 +19,9 @@ class AppointmentQueueService(
 
     fun create(cpf: String, petId: Long): AppointmentQueue {
         val customer = userRepository.findByCpfAndCategory(cpf, UserCategory.CUSTOMER) ?: throw NotFoundException()
-
+        val pet = customer.pets?.filter { it.id == petId }?.first()
         var position = 0
-        if(appointmentQueueRepository.existsByCustomer(customer)){
+        if(appointmentQueueRepository.existsByCustomerAndPets(customer, pet)){
             throw UserAlreadyExistsException()
         }
         val queue = appointmentQueueRepository.findFirstByOrderByPositionDesc()
