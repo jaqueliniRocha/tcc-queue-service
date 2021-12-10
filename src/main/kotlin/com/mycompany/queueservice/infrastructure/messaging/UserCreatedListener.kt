@@ -1,5 +1,6 @@
 package com.mycompany.queueservice.infrastructure.messaging
 
+import com.mycompany.queueservice.application.AppointmentQueueService
 import com.mycompany.queueservice.model.Serializer
 import com.mycompany.queueservice.model.User
 import com.mycompany.queueservice.model.repository.UserRepository
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service
 class UserCreatedListener (
     private val messageConverter: MessageConverter,
     private val userRepository: UserRepository,
+    private val appointmentQueueService: AppointmentQueueService,
     private val serializer: Serializer
 ){
 
@@ -23,6 +25,7 @@ class UserCreatedListener (
         val message = messageConverter.fromMessage(message)
         val user = serializer.deserialize(serializer.serialize(message), User::class.java)
         userRepository.save(user)
+        appointmentQueueService.updatePositionsInQueue()
         log.info("received user created: $user")
     }
 

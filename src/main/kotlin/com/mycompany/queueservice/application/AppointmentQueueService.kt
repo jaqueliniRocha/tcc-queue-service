@@ -69,17 +69,18 @@ class AppointmentQueueService(
         }
         val removedItem = queue.remove()
         removedItem.id?.let { appointmentQueueRepository.deleteById(it) }
-        updatePositionsInQueue(queue)
+        updatePositionsInQueue()
         return removedItem
     }
 
     fun remove(queueId: Long) {
         var appointment = appointmentQueueRepository.findById(queueId)
         appointmentQueueRepository.delete(appointment.get())
-        updatePositionsInQueue(appointmentQueueRepository.findAllByOrderByPositionAsc())
+        updatePositionsInQueue()
     }
 
-    private fun updatePositionsInQueue(queue: LinkedList<AppointmentQueue>) {
+    fun updatePositionsInQueue() {
+        var queue = appointmentQueueRepository.findAllByOrderByPositionAsc();
         var counter = 1
         for (appointment in queue) {
             appointment.position = counter
